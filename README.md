@@ -1,4 +1,4 @@
-html editor
-===========
+eisenscript editor
+==================
 
 Simple editor for messing around.
