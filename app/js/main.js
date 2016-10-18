@@ -156,7 +156,9 @@ buttonShare.textContent = 'share';
 buttonShare.addEventListener( 'click', function ( event ) {
 
   var dom = document.createElement( 'input' );
-  dom.value = 'http://mrdoob.com/projects/htmleditor/#B/' + encode( codemirror.getValue() );
+  var host = window.location.host;
+
+  dom.value = 'http://' + host + '/#B/' + encode( codemirror.getValue() );
   dom.style.width = '400px';
   dom.style.padding = '5px';
   dom.style.marginTop = '20px';
