@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/iframe.css">
+</head>
+<body>
+<script type="text/eisenscript" id="eisenscript">
+box
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="js/eisen/three.min.js"></script>
+<script src="js/eisen/color.js"></script>
+<script src="js/eisen/mt.js"></script>
+<script src="js/eisen/eisenscript.js"></script>
+<script type="text/javascript">
+$(function() {
+
+  var container, renderer, objects, n = 0;
+
+  // compiling...
+  var s = +new Date();
+  var compiler = new EISEN.Compiler();
+  var objectcode;
+  try {
+    objectCode = compiler.compile($('#eisenscript').text());
+  } catch (e) {
+    console.error(e.message);
+    return;
+  }
+
+  console.log('compile time:', (+new Date() - s) + 'ms');
+
+  // rendering...
+  var s = +new Date();
+  renderer = new EISEN.TestRenderer(window.innerWidth, window.innerHeight, {
+    materialType: 'lambert'
+  });
+
+  objectCode.objects.forEach(function(object) {
+    switch (object.type) {
+      case 'background': renderer.clearColor(object.color); break;
+      case 'primitive': renderer.addPrimitive(object); break;
+    }
+  });
+
+  console.log('render time:', (+new Date() - s) + 'ms');
+
+  // appending to body...
+  container = document.createElement('div');
+  document.body.appendChild(container);
+  container.appendChild(renderer.domElement);
+
+  renderer.render();
+});
+</script>
+</body>
+</html>

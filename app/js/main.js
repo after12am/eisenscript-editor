@@ -14,8 +14,9 @@ function encode( string ) {
 
 }
 
-//
-var defaultCode = decode( 'bVRbb9owFH6mv+KMvaRT6tBNqFMISBtl7cOqVW2laY/GPhCzxGa2w6UV/322kyCiEiHFOZfv+87FZB9uf01f/jzOILdlMbnI6lcvy5Fy9+5lJVoKLKfaoB33K7u4+toPDmP3BfpTb674Ht78qTen7O9Sq0ryK6YKpVP4uAjPKLhLqpdCpjCoP9UG9aJQ2xRywTnKYD148KRFz5JGSeZZamKmxdqC0Wzcz61dp0nCuFwZwgpV8UVBNRKmyoSu6C4pxNwkNteIZGUSPbxpPkohnaE/cUwB7gR5cuFlbKgGRkvUNAbDUGIMGiVHjXrU+peoXHv0PoaSWtSCFu6EJh8FhEUlmRVKgpDCRpeuQ6HoFgXGIHELL/dPsxmZUrmh5qlxRZejTihxvX8WrxjBVkiutkRIifq34DaPO6Z7FMvcQpPOFatKlJb41hG6Xju4aS4KHh1LIVyVswJ9lM8KaXXVHXmPqM0aXTUbnAZvBDfD+L0aSM7IiWFArmO4HrS6agKyVkb4/pBXx/WlIQ+t7nA/e0vUimtb3u1eNce7xhGB53K/lq0dTSfjwU3pOzWCPTTeCN6g2djBbhAeX5/GhXZqU7C6whPDT+GwfMUpfIbDsXV++O94ojN70ooL5RLK3UhCbgN06C4QlcInnu7QvwqN/RbsLuKH1xS1cR05RCsbYsjOKbt1biLV1kF9cmNxVQ5HZ0L350KvR90FJvUhaq9HszedEurVDxTHIoL/5N5lSX213VX3fz7/AQ==' );
+var container = decode('lVXLbtswELznK7ZqCkmIQwXopYitXBwXKdCmQeui6JGm1hIdiVRJ2o5R5N9LmXpQQRAkOq2Ws8PlzFKavbv+Pl/+uVvAzfLb16uTWWGqEkoq8jRAEVydAMwKpFkT2LBCQ4EVVGk0afBr+fn8U9AulVzcg8IyDbQ5lKgLRBNAoXCdBkzrhK8VrZDY0LEmHe1sJbNDS6KZ4rUBc6gxDQw+mAS5RuHSAfDMduUlXNUH7YoTlx1TacXSIEnohj6QXMq8RFpzTZisjrmk5CudbP5uUR2Sj+SCXLQvpOKCbGyvL9ButGsvMfaY+KYKJkupXo2uzKuhnjwv1HgCb+iOjuQEOI3WW8EMlyKK4d9JmwXYUQVMCkO5QDWxZosMVRPJ1QaZ0RMQkMLFdKhIEltQ1dwOR04IGTFpiz0TuIdrajCKp0+2aapQWUwDWXz5ubgl8zb5FOy2ZzLDIW/UwbYO/eMwc4uxlB07aYPoNArfe8qFMWm0iWJvo0dg1LACIoxHxFYQLUskqJRUkZ0C1Jrm6FWCVcpslfC4BoW68lLmUdi2A4ZXeBlOIPL0gXPQMZxBWOkwHkvsjHiLxJ11I3mXqM2PdiHac5HJPeHCWv2bZ6aYgJ+6QZ4XZjJSorKbKE7LpR2uSwhLWq1QmXA4td/24Adpp4espVpQVgzD5xbGcus9P7rg1kgzyGOAlZRqhHBF2X2u5FZk4WV/XsLs/Vfz5vJ1DMebGE9hpZDeT58hqhWvuOE79Hlolt11+a7PZzgenz/8yHTH+VbPaV3bOus5GAnNF9T3vr+k1t9Msm2Fwh7UNmdwUWLzFoUZ34XeRPSwI5djnxe8zKKezEP3uRGyVyeTVbuP33W/7IJhHntt/I/VLHH/BfujsL+kq/8=');
+var defaultValue = decode('nY9LDoMwDET3PsVI7LpACahUHCcBQz+USAlIfMTd60Rwga4sz3ie7cATvmZx9s3NFKArpRTRjoBcw0DlJYKZpN5xoPevsWVPQULWNJ/eu3lskXVdR+Tnga8J7ASUFW7Y4TdohVUQWhCXuEZRnLyAFauu8YQuZGCxbqHjxMUmseJBOgFkQ5uEGHugcYPzyJg5XRsJfwHkhfPdE/AD');
+var defaultCode = container.replace('%s', defaultValue);
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
 
@@ -180,7 +181,7 @@ buttonReset.addEventListener( 'click', function ( event ) {
 
   if ( confirm( 'Are you sure?' ) === true ) {
 
-    codemirror.setValue( defaultCode );
+    codemirror.setValue( defaultValue );
     save();
 
   }
@@ -198,7 +199,7 @@ buttonAbout.addEventListener( 'click', function ( event ) {
   dom.style.padding = '5px';
   dom.style.border = '0px';
   dom.style.textAlign = 'center';
-  dom.innerHTML = '<h1>HTML EDITOR<\/h1><a href="https://github.com/mrdoob/htmleditor" target="_blank">Source code</a>.<br>Powered by <a href="http://codemirror.net/" target="_blank">CodeMirror ' + CodeMirror.version + '</a> and <a href="http://esprima.org/" target="_blank">Esprima ' + esprima.version + '</a>.';
+  dom.innerHTML = '<h1>EISENSCRIPT EDITOR<\/h1><a href="https://github.com/after12am/eisenscript-editor" target="_blank">Source code</a>.<br>Powered by <a href="http://codemirror.net/" target="_blank">CodeMirror ' + CodeMirror.version + '</a> and <a href="http://esprima.org/" target="_blank">Esprima ' + esprima.version + '</a>.';
   popup.set( dom );
   popup.show();
 
@@ -363,8 +364,9 @@ function update() {
     // workaround for chrome bug
     // http://code.google.com/p/chromium/issues/detail?id=35980#c12
 
-    value = value.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
-
+    // value = value.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
+    container = container.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
+    value = container.replace('%s', value);
     content.open();
     content.write( value );
     content.close();
