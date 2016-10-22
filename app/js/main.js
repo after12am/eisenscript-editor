@@ -156,9 +156,9 @@ buttonShare.textContent = 'share';
 buttonShare.addEventListener( 'click', function ( event ) {
 
   var dom = document.createElement( 'input' );
-  var host = window.location.host;
+  var href = window.location.href;
 
-  dom.value = 'http://' + host + '/#B/' + encode( codemirror.getValue() );
+  dom.value = href + '#B/' + encode( codemirror.getValue() );
   dom.style.width = '400px';
   dom.style.padding = '5px';
   dom.style.marginTop = '20px';
