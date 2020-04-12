@@ -515,4 +515,11 @@ function toggle() {
 
 }
 
+var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('show')) {
+  if (urlParams.get('show') === 'false') {
+    toggle();
+  }
+}
+
 update();
