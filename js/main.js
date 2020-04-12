@@ -1,5 +1,3 @@
-console.warn('eisenscript v1.1.16. https://github.com/after12am/eisenscript');
-
 window.URL = window.URL || window.webkitURL;
 
 // deflate
@@ -16,9 +14,8 @@ function encode( string ) {
 
 }
 
-var container = decode('lVVNb9swDL33V3BeB9toKhfYZWjiXtIMHbCPYssw7KjIjK3UljxJSRoM/e+ja8eWi6JYc6KoxyfyPVmZvbn+Nl/+vl3AzfLL56uTWeGqEkqu8jRAFVydAMwK5FkTUFih4yAKbiy6NPi5/Hj+Iei2SqnuwGCZBtYdSrQFogugMLhOA2FtIteGV8gobFmTI+1spbNDR2KFkbUDd6gxDRzeuwSlRdWmA5AZdeUl2qp3ti1O2uyYyhqRBknCN/ye5VrnJfJaWiZ09ZhLSrmyyebPFs0hec8u2EW3YJVUbEO9vkC7sYmjAfE/sV7nL6C92Td8x0eTApxG660STmoVxfD3pMsC7LgBoZXjUqGZkA8qQ9NEerVB4ewEFKRwMR0qkoQKqlqSbzljbMRkCXumcA/X3GEUT58c01ShIUwDWXz6sfjK5l3yKbg9XugMh7wzB2od+l+LmROGKI/srAui0yh86ykXxqzRJoq9gx5AcCcKiDAeEZMgVpfI0BhtIrIJreU5epVASrmtUR7XoNCxvNR5FHbtgJMVXoYTiDx94BxsDGcQVjaMxxK3RrxG4qN1I3mXaN33biPaS5XpPZOKrP4lM1dMwE/doMwLNxkpUdEhRvJySZfrEsKSVys0Lhym9tse/GDd7WFrbRZcFMPlazfGctu9fHSh3WPNRR4DSFJuEcIVF3e50VuVhZf9vEzQp2nmuiSrOgbRLOIprAzyu+kzRLWRlXRyhz4Pz7LbY/7Y5zMcD88PPzK95Xyt57yuqY48B6ehedx87/uPlPzNtNhWqGhQas7hosRmFYWZ3IXejehhj1wt+7yQZRb1ZB66z42QvTqZrrpz/K777TYY7mOvjf9YzZL2yaY3nP4trv4B');
-console.log(container);
-var defaultCode = decode('nY9LDoMwDET3PsVI7LpACai0HCcBQz+USAlIUMTd60Rwga4sz3iebQo84WMWZ1/cTAG6UkoRbQjI7zBQeYlgJqlX7Oj9c2zZUwxZ07x77+axRdZ1HZGfBz4nsBFQVrhgg/9CK6yC0II4xTWK4uQFrFh1jQd0IQOLdQvtBy42iRUP0gkgG9okxNgNjRucR8bM6dpI+AsgLxzvnoAf');
+var container = decode('rVTvT9swEP3ev+KWMTUVq90KaZqAVNMK+6WNTqJ82Ec3uaYujp3ZDlBN/d93adImMDqQtk/2vdx7fne++PTF2WQ8/fH9HD5Nv30ddU4XPlOghE6jAHVQAigSWjL0AuKFsA59FFxNP/Tfll+V1NdgUUWB8yuFboHoA1hYnEdB7By3qBO0PBNSM4pLCq8VZyZZ0eJiK3MPfpVjFHi88xylQ13BAciEjLSAUeeVI40qaujOxlHAuViKO5YakyoUuXQsNtkG40rOHF/+LNCu+BEbsEEdsIyMLcnXHsmF97k75jxO9JLklCmSuRIWHyh7qhhJhw+HgzrYL1yVmpmkUBj88zEbmf9QQmyUsf1Sm9ozrMLndqfQ+XW60Wtd1bshO2Jv+KyQKmnjDwTvK9L55IZbcSs1ufR/raxJTvCx5D+y3xfzOdqPaGia7erKS+We0J/YmfRjo701T+ZWs77PQ2vAl+JG7Mb5IJwXOvbS6LAHvzoA5IxW2gBwDtTUXNJfljLGNtiNsOAggkONt3BGRYe9k90HM1tiTH4TPOnswEoCLZFKzvnny/MLNq7BLbthUtqWwepNeBB2X7ausNtjZSFhrybHRjtDU6hMGnZrDniZ4XH3NYQtp9AH14ND6Gau22tZfLSge6pVc58jWlKllj5sSqrRSmMrv2luc8KXy8kFc95Sq+V81SZXRtcQCx8vIMTqmhp/aK2xIf2K6JxIm8N8YXW5X3fWhLXmhtdPHy8f21HnNw==');
+var defaultCode = decode('hZDtCsIgFIb/exXvDSg6kOpyjFkLGoTbwCbee0dblMvaD784j895NaCbLCQGM0KKPQYooRHhGsbcdLW0QW98a29jh0YiMCAQJcVOw81QEkc6HLKG6gYked4HTs70lsXFlE8fAkWtVF49oDGnKeLsLu1vhP9F+LaFl5aFUULmehr3epgKsg5TItUwFeQrzKue2NzJV9+0Qmo/80b4toWXlsge');
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
 
@@ -54,6 +51,7 @@ var preview = document.getElementById( 'preview' );
 var interval;
 
 var editor = document.getElementById( 'editor' );
+console.log(documents[ 0 ].code, "aaaaaaaaaaa")
 var codemirror = CodeMirror( editor, {
 
   value: documents[ 0 ].code,
@@ -304,7 +302,7 @@ document.addEventListener( 'drop', function ( event ) {
   var reader = new FileReader();
 
   reader.onload = function ( event ) {
-
+    console.log("aaaaaaaaaaaaaaaa")
     codemirror.setValue( event.target.result );
 
   };
@@ -365,15 +363,17 @@ function update() {
 
     // workaround for chrome bug
     // http://code.google.com/p/chromium/issues/detail?id=35980#c12
-
     // value = value.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
     container = container.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
+    // console.log(value)
     value = container.replace('%s', value);
     content.open();
     content.write( value );
     content.close();
 
   }
+
+
 
 }
 
