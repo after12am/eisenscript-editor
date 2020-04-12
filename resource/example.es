@@ -1,23 +1,30 @@
-{ hue 0 sat 0.8 s 1.5 } r2
+{ s 0.2 } aa
 
-rule r2 maxdepth 20 {
-  { s 0.75 rz 10 b 0.9 hue 20 a .8  } r2
-  frame
+rule aa maxdepth 4 {
+  { y 1 } arc
+  { y -1 } arc
+  { ry 15 y 2 s 0.9 rz 35 hue 10 } aa
+  { ry 15 y -2 s 0.9 rz -35 hue 10 } aa
 }
 
-rule frame {
-  { s 0.1 1.1 0.1 x  5 z  5 } grid
-  { s 0.1 1.1 0.1 x  5 z -5 } grid
-  { s 0.1 1.1 0.1 x -5 z  5 } grid
-  { s 0.1 1.1 0.1 x -5 z -5 } grid
+rule spike {
+  35 * { z 0.9 ry 5 s 0.9 } grid
+}
 
-  { s 1.0 0.1 0.1 y  5 z  5 } grid
-  { s 1.0 0.1 0.1 y  5 z -5 } grid
-  { s 1.0 0.1 0.1 y -5 z  5 } grid
-  { s 1.0 0.1 0.1 y -5 z -5 } grid
+rule spike {
+  35 * { z 0.9 ry -5 s 0.9 } grid
+}
 
-  { s 0.1 0.1 1.0 y  5 x  5 } grid
-  { s 0.1 0.1 1.0 y  5 x -5 } grid
-  { s 0.1 0.1 1.0 y -5 x  5 } grid
-  { s 0.1 0.1 1.0 y -5 x -5 } grid
+rule spike {
+  35 * { z 0.9 ry 10 s 0.9 } grid
+}
+
+rule spike {
+  35 * { z 0.9 ry -10 s 0.9 } grid
+}
+
+rule arc {
+  20 * { ry 12 }
+  1 * { x 10 }
+  spike
 }
