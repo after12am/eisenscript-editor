@@ -371,9 +371,7 @@ function update() {
 
     var urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('doAnimate')) {
-      if (urlParams.get('doAnimate') === 'false') {
-        iframe.contentWindow.document.getElementById('doAnimate').setAttribute('data', 0);
-      }
+      iframe.contentWindow.document.getElementById('doAnimate').setAttribute('data', +urlParams.get('doAnimate'));
     }
   }
 

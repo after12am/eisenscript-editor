@@ -1,5 +1,9 @@
 var scene, camera, renderer, group;
-var doAnimate = +document.getElementById('doAnimate').getAttribute('data');
+
+var doAnimate;
+$(function() {
+  doAnimate = +document.getElementById('doAnimate').getAttribute('data');
+});
 
 function render() {
   requestAnimationFrame( render );
