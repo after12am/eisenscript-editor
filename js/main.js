@@ -14,7 +14,7 @@ function encode( string ) {
 
 }
 
-var container = decode('rVRRb9MwEH7vrzjCUFKN2q0mIbQtFaIbAwQr0roHHt3kmrpz7GI72yrU/86lyZowWjYJnmx/vu+7786XnL44G48m37+dw8fJ1y/Dzunc5wqU0FkcoA5KAEVKS45eQDIX1qGPg+vJh97b8lZJfQMWVRw4v1Lo5og+gLnFWRwkznGLOkXLcyE1o3NJ4bXi1KQrWlxi5dKDXy0xDjzee47Soa7gAGRKRlrAsPPKkUZ1aujOJnHAuViIe5YZkykUS+lYYvINxpWcOr74UaBd8SPWZ/36wHIytiBfeyTn3i/dMedJqhckp0yRzpSw+EjZU8VIOnww6NeH/cJVqblJC4XBP6fZyPyHEhKjjO2V2tSeQXV8bncKvbzJNnqtp3o3YEfsDZ8WUqVt/JHg74qUn9xwK+6kJpf+r5U1wSnuCv4j+n0xm6G9QEPTbFfXXir3hP7YTqUfGe2teTK2mvV9HloDvhC3YjvOB9Gs0ImXRkdd+NkBIGe00gaAc6CmLiV9ZRljbIPdCgsOYjjUeAdnVHTUPdlemOkCE/Kb4klnC1YSaIlUcs4/XZ1fslENPrAbJoU9MFi9iQ6i8GXrCcMuKwuJujU5MdoZmkJlsiisOeBljsfha4haTqEHrguHEOYu7LYs7ixIaumjxleNVl2OdmWurp6TeNvchv35anzJnLfUajlbtfNWRteQCJ/MIcLqmZrcaK2xEX2K6JzIGp++sLrcrztrwlpzw+tfHy9/tsPOLw==');
+var container = decode('rVTvb9MwEP3ev+IwQ001ZreahNC2TEBXfgk2pG0f+Ogm19SdYxfb2Vah/u9cmrQJo2WT4JPt53vv3p0vOXl2djG8+v5tBB+vvn457ZxMQ65BS5PFDA0rAZQpLTkGCclUOo8hZtdX7w9eszWs0pil9q1RuQzIIJVBxmxQXmtlbsChjpkPC41+ihgYTB1OYpZ4LxyaFJ3IpTKcziVF1AnHNl3Q4hOn5gHCYo4xC3gfBCqPpoLZKnUbOO288KRRnRq6d0nMhJAzec8zazONcq48T2y+woRWYy9mPwp0C3HI+7xfH3hOxmbka4fkNIS5PxIiSc2M5LQt0omWDh8oB6oYSUcMBv36sFu4KjW3aaGpmf+aZiXzH0pIrLbuoNSm9gyq41O7U5j5TbbSaz3VmwE/5K/EuFA6beMPBH9XpPzkRjh5pwy5DH+trAlOcVvwH9HviskE3Qe0NNVucR2U9o/oX7ixCkNrgrOPxlazvstDa8Bn8lZuxnkvmhQmCcqaqAc/OwDkjFbaAAgB1NS5oq8s45yvsFvpwEMM+wbv4IyKjnrHmws7nmFCflM87mzASgIdkUrO6NPl6JwPa3DNbpgUtmbwehPtRd3nrSfs9nhZSNSryYk13tIUaptF3ZoDQeV41H0JUcspHIDvwT50c9/ttSxuLUgZFaLGV41WXY62Za6unpJ409yG/fny4pz74KjVarJo562MLiGRIZlChNUzNbnROesi+hTRe5k1PkPhTLlfdpaEteZG1L8+Uf6LTzu/AA==');
 var defaultCode = decode('lZDBCsIwEETv+Yo5C5EkmoOfE2ywRYWytdA25N+73eYQBMHeMrvzZjebMMCcHTJCUIrGV+QH3mFqYv9pcUVSQMIMu1noXpSuJXHXc9FJ1g204OLRjhHW7MG1S1c2/eXLZYWh755RRrPhxPCyEzN8gTMe1DV/APowwcscnfEL4QsJ4IwAWzifmgtW9CQfZynRTK0=');
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
@@ -371,6 +371,12 @@ function update() {
     content.write( value );
     content.close();
 
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('doAnimate')) {
+      if (urlParams.get('doAnimate') === 'false') {
+        iframe.contentWindow.document.getElementById('doAnimate').setAttribute('data', 0);
+      }
+    }
   }
 
 

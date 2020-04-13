@@ -1,10 +1,13 @@
 var scene, camera, renderer, group;
+var doAnimate = +document.getElementById('doAnimate').getAttribute('data');
 
 function render() {
   requestAnimationFrame( render );
 
-  group.rotation.x += 0.005;
-  group.rotation.y += 0.005;
+  if (doAnimate) {
+    group.rotation.x += 0.005;
+    group.rotation.y += 0.005;
+  }
 
   renderer.render( scene, camera );
 };
