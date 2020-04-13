@@ -517,9 +517,10 @@ function toggle() {
 
 }
 
+// hide show-code
 var urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has('show')) {
-  if (urlParams.get('show') === 'false') {
+  if (+urlParams.get('show') === 0) {
     toggle();
   }
 }
