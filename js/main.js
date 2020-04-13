@@ -51,7 +51,6 @@ var preview = document.getElementById( 'preview' );
 var interval;
 
 var editor = document.getElementById( 'editor' );
-console.log(documents[ 0 ].code, "aaaaaaaaaaa")
 var codemirror = CodeMirror( editor, {
 
   value: documents[ 0 ].code,
@@ -302,7 +301,6 @@ document.addEventListener( 'drop', function ( event ) {
   var reader = new FileReader();
 
   reader.onload = function ( event ) {
-    console.log("aaaaaaaaaaaaaaaa")
     codemirror.setValue( event.target.result );
 
   };
