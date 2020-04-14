@@ -1,8 +1,9 @@
 var scene, camera, renderer, group;
 
-var doAnimate;
+var doAnimate, doOptimize;
 $(function() {
   doAnimate = +document.getElementById('doAnimate').getAttribute('data');
+  doOptimize = +document.getElementById('doOptimize').getAttribute('data');
 });
 
 function render() {
@@ -110,13 +111,17 @@ function init(objectCode) {
 
   let transparent = false;
   for (let i = 0; i < objectCode.objects.length; i++) {
-    let object = objectCode.objects[i]
+    let object = objectCode.objects[i];
     if (object.type === 'primitive') {
       if (object.opacity !== 1) {
         transparent = true;
         break;
       }
     }
+  }
+
+  if (!doOptimize) {
+    transparent = true;
   }
 
   var geometries = [];

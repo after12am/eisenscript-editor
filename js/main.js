@@ -14,7 +14,7 @@ function encode( string ) {
 
 }
 
-var container = decode('rVTvb9MwEP3ev+IwQ001ZreahNC2TEBXfgk2pG0f+Ogm19SdYxfb2Vah/u9cmrQJo2WT4JPt53vv3p0vOXl2djG8+v5tBB+vvn457ZxMQ65BS5PFDA0rAZQpLTkGCclUOo8hZtdX7w9eszWs0pil9q1RuQzIIJVBxmxQXmtlbsChjpkPC41+ihgYTB1OYpZ4LxyaFJ3IpTKcziVF1AnHNl3Q4hOn5gHCYo4xC3gfBCqPpoLZKnUbOO288KRRnRq6d0nMhJAzec8zazONcq48T2y+woRWYy9mPwp0C3HI+7xfH3hOxmbka4fkNIS5PxIiSc2M5LQt0omWDh8oB6oYSUcMBv36sFu4KjW3aaGpmf+aZiXzH0pIrLbuoNSm9gyq41O7U5j5TbbSaz3VmwE/5K/EuFA6beMPBH9XpPzkRjh5pwy5DH+trAlOcVvwH9HviskE3Qe0NNVucR2U9o/oX7ixCkNrgrOPxlazvstDa8Bn8lZuxnkvmhQmCcqaqAc/OwDkjFbaAAgB1NS5oq8s45yvsFvpwEMM+wbv4IyKjnrHmws7nmFCflM87mzASgIdkUrO6NPl6JwPa3DNbpgUtmbwehPtRd3nrSfs9nhZSNSryYk13tIUaptF3ZoDQeV41H0JUcspHIDvwT50c9/ttSxuLUgZFaLGV41WXY62Za6unpJ409yG/fny4pz74KjVarJo562MLiGRIZlChNUzNbnROesi+hTRe5k1PkPhTLlfdpaEteZG1L8+Uf6LTzu/AA==');
+var container = decode('rVTfT9swEH7vX3HzmJqKYbdCmiYgaBuwX9roJOBhj25yTV0cO7MdoJv433dp0iYwOpC2J/s+33333fnsg2fH46Pz799O4OP51y+HvYNZyDVoabKYoWEVgDKlJccgIZlJ5zHE7OL8/c5rtoJVGrPUvjUqlwEZpDLImI3uHY+LoHL18+65VuYSHOqY+bDQ6GeIgcHM4TRmiffCoUnRiVwqw8muQkQjaGLTBS0+caoIEBYFxizgTRCoPJoaZsvcXeCw98ITR2214d4lMRNCzuUNz6zNNMpCeZ7YfIkJrSZezH+U6BZilw/5sDF4TsLmpGsD5SyEwu8JkaRmTnTalulUS4f3mANVjMQjRqNhY2wmrkvNbVpqaua/plnS/IcSEqut26m4qT2j2nxqd0pTXGZLvs5VvRnxXf5KTEql0y5+j/AuI+UnNcLJa2VIZfhrZa1zig85/+H9rpxO0X1AS2PtFhdBaf8I/9hNVDiyJjj7qG8965s0dAZ8Lq/kepy3omlpkqCsiQbwqwdAymilDYAQQE0tFL2yjHO+xK6kAw8xbBu8hmMqOhrsrw/sZI4J6U1xv7cGawp0FFTFnHw6OznlRw24im4jyW0VwZtNtBX1n3eusD/gVSHRoAlOrPGWplDbLOo3MUC/Be71X0LUUQo74AewDf3c9wcdiQ8WpIwKUaurQesuRw9lro+eknjd3Db689n4lPvgqNVquujmrYXeQiJDMoMI62tqc6Nz1kX0FNF7mbU6Q+lMtb/t3RLWmRvRfH2i+qsPe78B');
 var defaultCode = decode('lZDBCsIwEETv+Yo5C5EkmoOfE2ywRYWytdA25N+73eYQBMHeMrvzZjebMMCcHTJCUIrGV+QH3mFqYv9pcUVSQMIMu1noXpSuJXHXc9FJ1g204OLRjhHW7MG1S1c2/eXLZYWh755RRrPhxPCyEzN8gTMe1DV/APowwcscnfEL4QsJ4IwAWzifmgtW9CQfZynRTK0=');
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
@@ -373,10 +373,10 @@ function update() {
     if (urlParams.has('doAnimate')) {
       iframe.contentWindow.document.getElementById('doAnimate').setAttribute('data', +urlParams.get('doAnimate'));
     }
+    if (urlParams.has('doOptimize')) {
+      iframe.contentWindow.document.getElementById('doOptimize').setAttribute('data', +urlParams.get('doOptimize'));
+    }
   }
-
-
-
 }
 
 var errorLines = [];
