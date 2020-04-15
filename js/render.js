@@ -1,18 +1,31 @@
 var scene, camera, renderer, group;
 
-var doAnimate, doOptimize;
+var doOptimize;
+var docsite, doRenderOnDocsite = false;
 $(function() {
-  doAnimate = +document.getElementById('doAnimate').getAttribute('data');
   doOptimize = +document.getElementById('doOptimize').getAttribute('data');
+
+  docsite = +document.getElementById('docsite').getAttribute('data');
+  if (docsite) {
+    document.body.onmouseover = () => {
+      doRenderOnDocsite = true;
+    }
+    document.body.onmouseout = () => {
+      doRenderOnDocsite = false;
+    }
+  }
 });
 
 function render() {
   requestAnimationFrame( render );
 
-  if (doAnimate) {
-    group.rotation.x += 0.005;
-    group.rotation.y += 0.005;
+  // use only at docsite
+  if (docsite && !doRenderOnDocsite) {
+    return;
   }
+
+  group.rotation.x += 0.005;
+  group.rotation.y += 0.005;
 
   renderer.render( scene, camera );
 };
@@ -168,6 +181,10 @@ function init(objectCode) {
         }
 
         break;
+    }
+
+    if (docsite) {
+      renderer.render( scene, camera );
     }
   });
 
