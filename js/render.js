@@ -1,5 +1,21 @@
 var scene, camera, renderer, group;
 
+function toDataURL(format) {
+  if (renderer) {
+    const dom = renderer.domElement;
+    switch (format) {
+      case 'jpg':
+      case 'jpeg': return dom.toDataURL("image/jpeg");
+      case 'gif': return dom.toDataURL("image/gif");
+      default: return dom.toDataURL("image/png");
+    }
+  }
+}
+
+function save(format) {
+  window.open(toDataURL(format));
+}
+
 var doOptimize;
 var docsite, doRenderOnDocsite = false;
 $(function() {
@@ -46,7 +62,15 @@ function createGeometry(type) {
     case 'mesh': console.warn("mesh is not implemented yet"); return;
     case 'cylinder': return new THREE.CylinderBufferGeometry(.5, .5, 1, 32);
     case 'tube': console.warn("tube is not implemented yet"); return;
-    case 'triangle': console.warn("triangle is not implemented yet"); return;
+    case 'triangle':
+      var geometry = new THREE.BufferGeometry();
+      var  vertices = new Float32Array( [
+        0.0,  .5, 0.0,
+        -.5, -.5, 0.0,
+         .5, -.5, 0.0
+      ] );
+      geometry.setAttribute( 'position', new THREE.BufferAttribute(vertices, 3));
+      return geometry;
     case 'squash':
       var geometry = new THREE.SphereBufferGeometry(.5, 32, 32);
       geometry.scale(1, .5, 1);
