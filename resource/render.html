@@ -15,36 +15,10 @@
 <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.module.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-js/1.0.1/color.min.js"></script>
 <script src="https://unpkg.com/eisenscript@2.0.0/build/eisenscript.js"></script>
-
 <script src="js/lib/rawinflate.js"></script>
 <script src="js/lib/rawdeflate.js"></script>
-
 <script src="js/BufferGeometryUtils.js"></script>
 <script src="js/OrbitControls.js"></script>
 <script src="js/render.js"></script>
-
-<script type="text/javascript">
-(async () => {
-  try {
-    // compiling...
-    var s = +new Date();
-    var objectCode;
-    var compiler = new EISEN.Compiler();
-    objectCode = compiler.compile(document.getElementById('eisenscript').textContent);
-    console.log('compile time:', (+new Date() - s) + 'ms');
-
-    var s = +new Date();
-    await init(objectCode);
-    render();
-    console.log('render time:', (+new Date() - s) + 'ms');
-    // console.log(JSON.stringify(objectCode));
-
-  } catch (e) {
-    console.error(e.message);
-    return;
-  }
-})();
-
-</script>
 </body>
 </html>

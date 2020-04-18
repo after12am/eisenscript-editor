@@ -20,7 +20,7 @@ var doOptimize;
 var wireframe = false;
 
 var docsite, doRenderOnDocsite = false;
-window.onload = function() {
+window.onload = async () => {
   doOptimize = +document.getElementById('doOptimize').getAttribute('data');
   wireframe = !!(+document.getElementById('wireframe').getAttribute('data'));
 
@@ -32,6 +32,25 @@ window.onload = function() {
     document.body.onmouseout = () => {
       doRenderOnDocsite = false;
     }
+  }
+
+  try {
+    // compiling...
+    var s = +new Date();
+    var objectCode;
+    var compiler = new EISEN.Compiler();
+    objectCode = compiler.compile(document.getElementById('eisenscript').textContent);
+    console.log('compile time:', (+new Date() - s) + 'ms');
+
+    var s = +new Date();
+    await init(objectCode);
+    render();
+    console.log('render time:', (+new Date() - s) + 'ms');
+    // console.log(JSON.stringify(objectCode));
+
+  } catch (e) {
+    console.error(e.message);
+    return;
   }
 };
 
@@ -208,10 +227,6 @@ async function init(objectCode) {
 
         break;
     }
-
-    if (docsite) {
-      renderer.render( scene, camera );
-    }
   });
 
   // if not transparency, use this for performance
@@ -229,6 +244,10 @@ async function init(objectCode) {
   }
 
   console.log(`Build done. Created ${geometries.length} objects.`);
+
+  if (docsite) {
+    renderer.render( scene, camera );
+  }
 }
 
 
