@@ -151,6 +151,7 @@ function init(objectCode) {
     let object = objectCode.objects[i];
     if (object.type === 'primitive') {
       if (object.opacity !== 1) {
+        console.warn(`If you don't use transparency (alpha parameter), performance will be improved extremely.`);
         transparent = true;
         break;
       }
@@ -174,8 +175,6 @@ function init(objectCode) {
         geometry.applyMatrix(matrix);
 
         if (transparent) {
-          console.warn(`If you don't use transparency (alpha parameter), performance will be improved extremely.`);
-
           var meshMaterial = new THREE.MeshPhongMaterial({
             color: parseInt(object.color.replace(/^#/, '0x'), 16),
             specular: 0x999999,
