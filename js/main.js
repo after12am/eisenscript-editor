@@ -14,7 +14,7 @@ function encode( string ) {
 
 }
 
-var container = decode('rVTfUxMxEH7vX7FGnF4HSVp9cYBjHBF/jVJngAcf09z2mpJLziQHVIf/3b3e0TsRhBl9SvLt7rffbjbZf/J2enj67esRfDj98vlgsL+IhQEjbZ4ytKwGUGa0FBglqIX0AWPKzk7f7bxiN7DOUpa5aRl1oX8gg0xGmbLJLbsKOm6M49potD0HjyZlIa4MhgViZLDwOE+ZCkF4tBl6UUhtOZ3rENHKmblsRUtQXpcR4qrElEW8igJ1QNvAbJ24DxwMngXiaE5dePAqZULIpbziuXO5QVnqwJUr1pgwehbE8nuFfiVe8jEftwdekLAl6bqHchFjGXaFUJldEp1xVTY30uMt5kgVI/GIyWTcHu4nbkotXFYZaua/plnT/IcSlDPO79Tc1J5Jc3xsdypbnudrvt5VvX6x7vOs0ibr47cIf2ek/KRGeHmpLamMf62sc87wLuc/vN9U8zn69+hopv3qLGoTHuCf+pmOh85G7x70bWb9Pg29AV/KC7kZ561kXlkVtbPJCH4OAEgZrbQBEAKoqaWmV5ZzztfYhfQQIIVti5fwlopORnsbg5stUZHeDPcGG7ChQE9BdczRx5OjY37YgjfRXSS53UTwdpNsJcOnvSscjnhdSDJqg5WzwdEUGpcnwzYG6CvB3eFzSHpKYQfCCLZhWIThqCfxzoK01THpdLVo0+XkrsyN6TGJN83toj+dTI95iJ5areerft5G6DUoGdUCEmyuqcuN3juf0FPEEGTe6YyVt/X+enBNWG9uRPv1ifqnPhj8Ag==');
+var container = decode('rVRNc9MwEL3nVwhRJs6USglcmLbuMLTla6BhpumBoyJvHKWyZCS5aWD631nHTuyEhHYGTpLe7r59u1rp9NnF8Hz0/dsl+Tj6+uWsczoNmSZamDSmYGgJgEhwySAIIqfCeQgxvRm9P3pDV7BKYprYYR5Upn4CJYkIIqaDLbv0KqyN/Q3jXDmYOJFtmrUyt8SBjqkPCw1+ChAomaJrTKX33IFJwPFMKMPwXIbwWu3YJgtcvHQqDyQscohpgPvAQXkwFUyXqdvAWeeFR47q1IR7J2PKuZiJe5Zam2oQufJM2myJca3Gns9+FOAW/DXrs359YBkKm6GuPZTTEHJ/zLlMzAzptC2SiRYOtpgDVgzIwweDfn3YT1yVmtmk0NjMf02zpPkPJUirrTsqubE9g+r41O4UJr9Nl3ytq3r7atnncaF00sa3CDcZMT+q4U7MlUGV4a+VNc4J7HL+w/tdMZmA+wAWp9otboLS/hH+oRurcG5NcPZR32rW92loDfhM3In1OB9Ek8LIoKyJeuRXhxBUhituCOGcYFNzha8sZYwtsTvhiCcxOTQwJxdYdNQ7WRvseAYS9SZw0lmDFQU4DCpjLj9dX16x8xpcRTeR6LaKYPUmOoi6z1tX2O2xspCoVwdLa7zFKdQ2jbp1DMGfBo67L0nUUkqOiO+RQ9LNfLfXkrizIGVUiBpdNVp1OdqVuTI9JfG6uU305+vhFfPBYavVZNHOWwl9IFIEOSURVNfU5AbnrIvwKYL3Im10hsKZcv/QeUCsNTe8/vp4+ZGfdX4D');
 var defaultCode = decode('lZDBCsIwEETv+Yo5C5EkmoOfE2ywRYWytdA25N+73eYQBMHeMrvzZjebMMCcHTJCUIrGV+QH3mFqYv9pcUVSQMIMu1noXpSuJXHXc9FJ1g204OLRjhHW7MG1S1c2/eXLZYWh755RRrPhxPCyEzN8gTMe1DV/APowwcscnfEL4QsJ4IwAWzifmgtW9CQfZynRTK0=');
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
@@ -378,6 +378,9 @@ function update() {
     }
     if (urlParams.has('docsite')) {
       iframe.contentWindow.document.getElementById('docsite').setAttribute('data', +urlParams.get('docsite'));
+    }
+    if (urlParams.has('wireframe')) {
+      iframe.contentWindow.document.getElementById('wireframe').setAttribute('data', +urlParams.get('wireframe'));
     }
   }
 }

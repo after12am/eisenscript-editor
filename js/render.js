@@ -17,9 +17,12 @@ function save(format) {
 }
 
 var doOptimize;
+var wireframe = false;
+
 var docsite, doRenderOnDocsite = false;
 $(function() {
   doOptimize = +document.getElementById('doOptimize').getAttribute('data');
+  wireframe = !!(+document.getElementById('wireframe').getAttribute('data'));
 
   docsite = +document.getElementById('docsite').getAttribute('data');
   if (docsite) {
@@ -220,7 +223,7 @@ function init(objectCode) {
       emissive: 0x072534,
       transparent: true,
       opacity: 1,
-      wireframe: true
+      wireframe,
     });
     group.add(new THREE.Mesh(THREE.BufferGeometryUtils.mergeBufferGeometries(geometries), defaultMaterial));
   }
