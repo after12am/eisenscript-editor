@@ -11,7 +11,6 @@
 <script type="text/eisenscript" id="eisenscript">
 %s
 </script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
 <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.module.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-js/1.0.1/color.min.js"></script>
@@ -25,19 +24,17 @@
 <script src="js/render.js"></script>
 
 <script type="text/javascript">
-$(function() {
+(async () => {
   try {
-
     // compiling...
     var s = +new Date();
     var objectCode;
-
     var compiler = new EISEN.Compiler();
-    objectCode = compiler.compile($('#eisenscript').text());
+    objectCode = compiler.compile(document.getElementById('eisenscript').textContent);
     console.log('compile time:', (+new Date() - s) + 'ms');
 
     var s = +new Date();
-    init(objectCode);
+    await init(objectCode);
     render();
     console.log('render time:', (+new Date() - s) + 'ms');
     // console.log(JSON.stringify(objectCode));
@@ -46,7 +43,8 @@ $(function() {
     console.error(e.message);
     return;
   }
-});
+})();
+
 </script>
 </body>
 </html>

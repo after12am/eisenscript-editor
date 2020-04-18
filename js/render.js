@@ -20,7 +20,7 @@ var doOptimize;
 var wireframe = false;
 
 var docsite, doRenderOnDocsite = false;
-$(function() {
+window.onload = function() {
   doOptimize = +document.getElementById('doOptimize').getAttribute('data');
   wireframe = !!(+document.getElementById('wireframe').getAttribute('data'));
 
@@ -33,7 +33,7 @@ $(function() {
       doRenderOnDocsite = false;
     }
   }
-});
+};
 
 function render() {
   requestAnimationFrame( render );
@@ -92,7 +92,7 @@ function applyVertexColors(geometry, color) {
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));
 }
 
-function init(objectCode) {
+async function init(objectCode) {
 
   ///////////////////////////////
   // SCENE
