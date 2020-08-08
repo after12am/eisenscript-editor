@@ -185,7 +185,7 @@ async function init(objectCode) {
   }
 
   var geometries = [];
-  objectCode.objects.forEach(function(object) {
+  objectCode.objects.reverse().forEach(function(object) {
     switch (object.type) {
       case 'background':
         scene.background = new THREE.Color(object.color);
