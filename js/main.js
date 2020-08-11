@@ -14,7 +14,7 @@ function encode( string ) {
 
 }
 
-var container = decode('pVPLTsMwELz3K4Iljo0bTgjVFaK8DqByKAeOjr1tnPoR2Ru14etxmkIfiBbEabWzs7Oz1np4djsZT99e7pLH6fPTqDcs0OhEcztnBCxpAeAyBgPIE1FwHwAZeZ3e9y/JJ6wkI9JNKlRGvQNJJEfOSHZQF0HhV3GwV1wqDzPPzX5ZK7tIPGhGAjYaQgGAJCkilRERAvVgJXhquLJpzNsWunGbO9nEEIRXFSbYVMAIwgopqAC2g8l69C4w6p2HqNFl2/bgBSMFYhWuKBXSliEV2tVyprmHVDhDeclXVKs8UIz2IC0DzbLBJjHRXhndfRfufBknax03/++YtcwPk/6iLZx2vt9qp4M069IjS+xJ17ZazNd6O+96fZFGKZrXSstd/JhgHB/NUM+XykaTeHSxLVnCb8g39WwG/gFcPEDfvKLS4UTHxOcKx86idye53VkekujmJGn7wUa9Dw==');
+var container = decode('pVPLTsMwELz3K4Iljo0bTgg1FaK8DqByaA8cHXvTOPUjsjdqw9fjNIU+UFsQJ2tnZ2Zno83w4n4ynr6/PUTP09eXUW9YoFaRYmaeEjCkBYCJ8GhAFvGCOQ+Yktn0sX9NvmApUiLspEKp5QeQSDBkKUkO+txL/G4O9prMSM3wiHIpHeSO6X2tkmYROVAp8dgo8AUAkqgI1JRw76kDI8BRzaSJQ91K6GaVzIomPJ47WWGETQUpQVghBenBdDBZj94FRr1LHzy6aiv3jqekQKz8DaVcmNLHXNla5Io5iLnVlJVsRZXMPMUQD+LS0yQZbAod4pUh3U/jLpe2olZh8/+OWdscmfQXb26Vdf3WOx7ESVeeWGLPujbVYr722/mut1dxsKJZLZXYxU8ZhvEhDHVsKU0IiScX25IF/IZ8V+c5uCew4QBdM0Op/BnFxGUSx9ags2e53VkekujmJGn79416nw==');
 var defaultCode = decode('lZDBCsIwEETv+Yo5C5EkmoOfE2ywRYWytdA25N+73eYQBMHeMrvzZjebMMCcHTJCUIrGV+QH3mFqYv9pcUVSQMIMu1noXpSuJXHXc9FJ1g204OLRjhHW7MG1S1c2/eXLZYWh755RRrPhxPCyEzN8gTMe1DV/APowwcscnfEL4QsJ4IwAWzifmgtW9CQfZynRTK0=');
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
@@ -79,6 +79,28 @@ codemirror.on( 'change', function() {
 
 var toolbar = document.getElementById( 'toolbar' );
 
+
+
+
+var buttonAnimate = document.createElement( 'span' );
+buttonAnimate.className = 'button';
+
+var checkboxAnimate = document.createElement( 'input' );
+checkboxAnimate.type = 'checkbox';
+checkboxAnimate.style.margin = '-4px 4px -4px 0px';
+checkboxAnimate.addEventListener( 'click', function ( event ) {
+
+  event.stopPropagation();
+
+  var iframe = document.getElementsByTagName('iframe')[0];
+  iframe.contentWindow.document.getElementById('animate').setAttribute('data', +checkboxAnimate.checked);
+
+}, false );
+buttonAnimate.appendChild( checkboxAnimate );
+buttonAnimate.appendChild( document.createTextNode( 'animate' ) );
+toolbar.appendChild( buttonAnimate );
+
+
 var buttonUpdate = document.createElement( 'button' );
 buttonUpdate.className = 'button';
 
@@ -106,6 +128,7 @@ buttonUpdate.addEventListener( 'click', function ( event ) {
 
 }, false );
 toolbar.appendChild( buttonUpdate );
+
 
 var buttonHide = document.createElement( 'button' );
 buttonHide.className = 'button';
@@ -376,12 +399,14 @@ function update() {
     if (urlParams.has('doOptimize')) {
       iframe.contentWindow.document.getElementById('doOptimize').setAttribute('data', +urlParams.get('doOptimize'));
     }
+    console.log(urlParams.has('docsite'))
     if (urlParams.has('docsite')) {
       iframe.contentWindow.document.getElementById('docsite').setAttribute('data', +urlParams.get('docsite'));
     }
     if (urlParams.has('wireframe')) {
       iframe.contentWindow.document.getElementById('wireframe').setAttribute('data', +urlParams.get('wireframe'));
     }
+    iframe.contentWindow.document.getElementById('animate').setAttribute('data', 0);
   }
 }
 

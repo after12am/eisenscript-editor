@@ -57,13 +57,26 @@ window.onload = async () => {
 function render() {
   requestAnimationFrame( render );
 
-  // use only at docsite
-  if (docsite && !doRenderOnDocsite) {
+  // use only at document
+  if (docsite) {
+    if (!doRenderOnDocsite) {
+      return;
+    }
+
+    group.rotation.x += 0.005;
+    group.rotation.y += 0.005;
+  
+    renderer.render( scene, camera );
     return;
   }
 
-  group.rotation.x += 0.005;
-  group.rotation.y += 0.005;
+  // not at document site
+  animate = +document.getElementById('animate').getAttribute('data');
+
+  if (animate) {
+    group.rotation.x += 0.005;
+    group.rotation.y += 0.005;
+  }
 
   renderer.render( scene, camera );
 };
