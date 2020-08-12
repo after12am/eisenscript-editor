@@ -533,6 +533,7 @@ function toggle() {
     buttonHide.textContent = 'show code';
 
     editor.style.display = 'none';
+    buttonAnimate.style.display = 'none';
     buttonUpdate.style.display = 'none';
     buttonShare.display = 'none';
 
@@ -541,6 +542,7 @@ function toggle() {
     buttonHide.textContent = 'hide code';
 
     editor.style.display = '';
+    buttonAnimate.style.display = '';
     buttonUpdate.style.display = '';
     buttonShare.display = '';
 
