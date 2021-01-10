@@ -406,7 +406,7 @@ function update() {
     if (urlParams.has('wireframe')) {
       iframe.contentWindow.document.getElementById('wireframe').setAttribute('data', +urlParams.get('wireframe'));
     }
-    iframe.contentWindow.document.getElementById('animate').setAttribute('data', 0);
+    iframe.contentWindow.document.getElementById('animate').setAttribute('data', +checkboxAnimate.checked);
   }
 }
 
