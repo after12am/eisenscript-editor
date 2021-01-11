@@ -1,5 +1,3 @@
-var scene, camera, renderer, group;
-
 function toDataURL(format) {
   if (renderer) {
     const dom = renderer.domElement;
@@ -15,44 +13,6 @@ function toDataURL(format) {
 function save(format) {
   window.open(toDataURL(format));
 }
-
-var doOptimize;
-var wireframe = false;
-
-var docsite, doRenderOnDocsite = false;
-window.onload = async () => {
-  doOptimize = +document.getElementById('doOptimize').getAttribute('data');
-  wireframe = !!(+document.getElementById('wireframe').getAttribute('data'));
-
-  docsite = +document.getElementById('docsite').getAttribute('data');
-  if (docsite) {
-    document.body.onmouseover = () => {
-      doRenderOnDocsite = true;
-    }
-    document.body.onmouseout = () => {
-      doRenderOnDocsite = false;
-    }
-  }
-
-  try {
-    // compiling...
-    var s = +new Date();
-    var objectCode;
-    var compiler = new EISEN.Compiler();
-    objectCode = compiler.compile(document.getElementById('eisenscript').textContent);
-    console.log('compile time:', (+new Date() - s) + 'ms');
-
-    var s = +new Date();
-    await init(objectCode);
-    render();
-    console.log('render time:', (+new Date() - s) + 'ms');
-    // console.log(JSON.stringify(objectCode));
-
-  } catch (e) {
-    console.error(e.message);
-    return;
-  }
-};
 
 function render() {
   requestAnimationFrame( render );
@@ -125,7 +85,7 @@ function applyVertexColors(geometry, color) {
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));
 }
 
-async function init(objectCode) {
+function init(objectCode) {
 
   ///////////////////////////////
   // SCENE
@@ -272,6 +232,8 @@ async function init(objectCode) {
       side: THREE.DoubleSide
     });
     group.add(new THREE.Mesh(THREE.BufferGeometryUtils.mergeBufferGeometries(geometries), defaultMaterial));
+
+    
   }
 
   console.log(`Build done. Created ${geometries.length} objects.`);
@@ -281,7 +243,38 @@ async function init(objectCode) {
   }
 }
 
+window.onload = async () => {
+  doOptimize = +document.getElementById('doOptimize').getAttribute('data');
+  wireframe = !!(+document.getElementById('wireframe').getAttribute('data'));
 
+  docsite = +document.getElementById('docsite').getAttribute('data');
+  if (docsite) {
+    document.body.onmouseover = () => {
+      doRenderOnDocsite = true;
+    }
+    document.body.onmouseout = () => {
+      doRenderOnDocsite = false;
+    }
+  }
+
+  try {
+    // compiling...
+    var s = +new Date();
+    var objectCode;
+    var compiler = new EISEN.Compiler();
+    objectCode = compiler.compile(document.getElementById('eisenscript').textContent);
+    console.log('compile time:', (+new Date() - s) + 'ms');
+
+    var s = +new Date();
+    init(objectCode);
+    render();
+    console.log('render time:', (+new Date() - s) + 'ms');
+    // console.log(JSON.stringify(objectCode));
+  } catch (e) {
+    console.error(e.message);
+    return;
+  }
+};
 
 window.addEventListener('resize', function() {
 

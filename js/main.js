@@ -14,7 +14,7 @@ function encode( string ) {
 
 }
 
-var container = decode('pVPLTsMwELz3K4Iljo2bnhBqKkR5HUDlUA4cHXvTOPUjsjdqw9fjNIU+UFsQJ2tnZmdno83o4m46mb2/3kdPs5fncW9UoFaRYmaeEjCkBYCJ8GhAFvGCOQ+YkrfZQ/+KfMFSpETYaYVSyw8gkWDIUpIc8NxL/CYHeyQzUrNj5FI6yB3T+7SSZhE5UCnx2CjwBQCSqAjSlHDvqQMjwFHNpIlD3bbQzSqZFU14PHeywgibClKCsEIK0oPpYLIevQuMe5c+eHTVtt07npICsfLXlHJhSh9zZWuRK+Yg5lZTVrIVVTLzFEM8iEtPk2SwKXSIV4Z0P427XNqKWoXN/ztmbXNk0l+8uVXW9VvveBAnXXliiT3r2lSL+dpv57veDONhMMpqqcQufsowjA9hqGNLaUJIPLnYVizgN+LbOs/BPYINB+iaN5TKn+mYukzixBp09qy2O8tDEd2cJG3/vnHvEw==');
+var container = decode('pVRNb9swDL37V2gCBqRAaiU9DWsdDG2zFcOGDEV62FGR6ESuLBkUvSQb9t+n2PnsmrTDfJFJPj4+CqSu3tyObsbfvw3Z3fjrl0FyNaPSMivdNOPg+MoBUsejBJJMzSQGoIw/jD+ev+Mbt9EZ135UkSnNT+BMS5IZ7z+Jq2BoG+wdBKUzpTwWnBuEHGV5GLbGPTIEm/FASwthBkCczSI04yoEgeA0oCilcWm0Vyli3crE62U8gkJTEaNlBRknWJAAE8C1bt6U3ncMkrchcrTWLj2gyviMqArvhVDaFSFV1tc6txIhVb4UspALYc0kCIryIC2C6Pd7a6OM8oqo7m/iVlfpdW1j5/9bpqE5UulfuJW3Hs9X3Gkv7bfmiSYOqGtXPU4bvr17/XCRXkSiSW2s3vefIozloxiBcm5cFEknG9uBNbwGfF3nOeAn8HEAcflAxoYXMkY4MXTjHaF/GXv9ebioPBLg88hB8kMiCwocdJmKU4+yy9phBuyyKfq6umwwu41r7e2esIzl0gbYwJrF68af+4Zm5G5b1w6X5LVTZLxj0IgbTQpQ1DljvxIWP+VdoHUIMKY5mLPx3f1wmO710zm7bNAIVKPbwtNq9WZ0GuFdxn1DzSP297FtKjbb+/SGxHpzxeqRGiR/AA==');
 var defaultCode = decode('lZDBCsIwEETv+Yo5C5EkmoOfE2ywRYWytdA25N+73eYQBMHeMrvzZjebMMCcHTJCUIrGV+QH3mFqYv9pcUVSQMIMu1noXpSuJXHXc9FJ1g204OLRjhHW7MG1S1c2/eXLZYWh755RRrPhxPCyEzN8gTMe1DV/APowwcscnfEL4QsJ4IwAWzifmgtW9CQfZynRTK0=');
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
@@ -227,6 +227,32 @@ buttonAbout.addEventListener( 'click', function ( event ) {
 
 }, false );
 menu.appendChild( buttonAbout );
+
+menu.appendChild( document.createElement( 'br' ) );
+
+
+var buttonObject = document.createElement( 'button' );
+buttonObject.className = 'button';
+menu.appendChild( buttonObject );
+
+var buttonObjectExporter = document.createElement( 'a' );
+buttonObjectExporter.className = 'button';
+buttonObjectExporter.textContent = 'OBJ';
+buttonObjectExporter.download = 'index.html';
+buttonObjectExporter.textContent = 'OBJ';
+buttonObjectExporter.addEventListener( 'click', function ( event ) {
+
+  var iframe = document.getElementsByTagName('iframe')[0];
+  var obj = iframe.contentWindow.exportObject().obj;
+
+  var blob = new Blob( [ obj ], { type: documents[ 0 ].filetype } );
+  var objectURL = URL.createObjectURL( blob );
+
+  buttonObjectExporter.href = objectURL;
+  buttonObjectExporter.download = documents[ 0 ].filename;
+
+}, false );
+buttonObject.appendChild( buttonObjectExporter );
 
 
 // popup

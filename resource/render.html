@@ -20,6 +20,18 @@
 <script src="js/lib/rawdeflate.js"></script>
 <script src="js/BufferGeometryUtils.js"></script>
 <script src="js/OrbitControls.js"></script>
+<script src="js/OBJExporter.js"></script>
+<script>
+var scene, camera, renderer, group;
+var doOptimize;
+var wireframe = false;
+var docsite, doRenderOnDocsite = false;
+
+function exportObject() {
+    const exporter = new THREE.OBJExporter();
+    return exporter.parse(group, "object");
+}
+</script>
 <script src="js/render.js"></script>
 </body>
 </html>
