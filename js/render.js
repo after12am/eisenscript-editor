@@ -269,6 +269,7 @@ async function init(objectCode) {
       transparent: true,
       opacity: 1,
       wireframe,
+      side: THREE.DoubleSide
     });
     group.add(new THREE.Mesh(THREE.BufferGeometryUtils.mergeBufferGeometries(geometries), defaultMaterial));
   }
