@@ -238,18 +238,16 @@ menu.appendChild( buttonObject );
 var buttonObjectExporter = document.createElement( 'a' );
 buttonObjectExporter.className = 'button';
 buttonObjectExporter.textContent = 'OBJ';
-buttonObjectExporter.download = 'index.html';
-buttonObjectExporter.textContent = 'OBJ';
 buttonObjectExporter.addEventListener( 'click', function ( event ) {
 
   var iframe = document.getElementsByTagName('iframe')[0];
   var obj = iframe.contentWindow.exportObject().obj;
 
-  var blob = new Blob( [ obj ], { type: documents[ 0 ].filetype } );
+  var blob = new Blob( [ obj ], { type: 'model/obj' } );
   var objectURL = URL.createObjectURL( blob );
 
   buttonObjectExporter.href = objectURL;
-  buttonObjectExporter.download = documents[ 0 ].filename;
+  buttonObjectExporter.download = documents[ 0 ].filename + '.obj';
 
 }, false );
 buttonObject.appendChild( buttonObjectExporter );
