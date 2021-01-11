@@ -252,6 +252,27 @@ buttonObjectExporter.addEventListener( 'click', function ( event ) {
 }, false );
 buttonObject.appendChild( buttonObjectExporter );
 
+var buttonMtl = document.createElement( 'button' );
+buttonMtl.className = 'button';
+menu.appendChild( buttonMtl );
+
+var buttonMtlExporter = document.createElement( 'a' );
+buttonMtlExporter.className = 'button';
+buttonMtlExporter.textContent = 'MTL';
+buttonMtlExporter.addEventListener( 'click', function ( event ) {
+
+  var iframe = document.getElementsByTagName('iframe')[0];
+  var obj = iframe.contentWindow.exportObject().mtl;
+
+  var blob = new Blob( [ obj ], { type: 'model/mtl' } );
+  var objectURL = URL.createObjectURL( blob );
+
+  buttonMtlExporter.href = objectURL;
+  buttonMtlExporter.download = documents[ 0 ].filename + '.mtl';
+
+}, false );
+buttonMtl.appendChild( buttonMtlExporter );
+
 
 // popup
 
