@@ -28,8 +28,15 @@ var wireframe = false;
 var docsite, doRenderOnDocsite = false;
 
 function exportObject() {
-    const exporter = new THREE.OBJExporter();
-    return exporter.parse(group, "object");
+  const exporter = new THREE.OBJExporter();
+  return exporter.parse(group, "object");
+}
+
+function getImage() {
+  if (renderer) {
+    const dom = renderer.domElement;
+    return dom.toDataURL("image/png");
+  }
 }
 </script>
 <script src="js/render.js"></script>

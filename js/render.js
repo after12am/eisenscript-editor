@@ -1,14 +1,3 @@
-function toDataURL(format) {
-  if (renderer) {
-    const dom = renderer.domElement;
-    switch (format) {
-      case 'jpg':
-      case 'jpeg': return dom.toDataURL("image/jpeg");
-      case 'gif': return dom.toDataURL("image/gif");
-      default: return dom.toDataURL("image/png");
-    }
-  }
-}
 
 function save(format) {
   window.open(toDataURL(format));
@@ -104,7 +93,10 @@ function init(objectCode) {
   ///////////////////////////////
   // RENDERER
   ///////////////////////////////
-  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    preserveDrawingBuffer: true
+  });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);

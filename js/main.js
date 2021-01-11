@@ -14,7 +14,7 @@ function encode( string ) {
 
 }
 
-var container = decode('pVRNb9swDL37V2gCBqRAaiU9DWsdDG2zFcOGDEV62FGR6ESuLBkUvSQb9t+n2PnsmrTDfJFJPj4+CqSu3tyObsbfvw3Z3fjrl0FyNaPSMivdNOPg+MoBUsejBJJMzSQGoIw/jD+ev+Mbt9EZ135UkSnNT+BMS5IZ7z+Jq2BoG+wdBKUzpTwWnBuEHGV5GLbGPTIEm/FASwthBkCczSI04yoEgeA0oCilcWm0Vyli3crE62U8gkJTEaNlBRknWJAAE8C1bt6U3ncMkrchcrTWLj2gyviMqArvhVDaFSFV1tc6txIhVb4UspALYc0kCIryIC2C6Pd7a6OM8oqo7m/iVlfpdW1j5/9bpqE5UulfuJW3Hs9X3Gkv7bfmiSYOqGtXPU4bvr17/XCRXkSiSW2s3vefIozloxiBcm5cFEknG9uBNbwGfF3nOeAn8HEAcflAxoYXMkY4MXTjHaF/GXv9ebioPBLg88hB8kMiCwocdJmKU4+yy9phBuyyKfq6umwwu41r7e2esIzl0gbYwJrF68af+4Zm5G5b1w6X5LVTZLxj0IgbTQpQ1DljvxIWP+VdoHUIMKY5mLPx3f1wmO710zm7bNAIVKPbwtNq9WZ0GuFdxn1DzSP297FtKjbb+/SGxHpzxeqRGiR/AA==');
+var container = decode('pVTLbtswELzrK1gCBRzAEe2cijoyisRu0yKFC8M+9EhTK5kOHwK5quMG+fdSD7/S2mnRE7W7w5lZkdzrN6PJ7ez7tzG5m329H0bXS9SKKG7yhIKhVQJ4GhYNyIlYcucBEzqffbx8R7dpmSY0tZMCpZY/gZKUI09o/0VdeIm7Yu+oyI3U/FRxLR1kjuvjspLmgThQCfW4UeCXAEjJMkATKrxnDkwKjmkuTRziagtrW1nYdBMWL5wskOCmgIQiPCID6cE0aVpLHyaG0VsfOJpov907kdAlYuHfMyZSs/KxULZMM8UdxMJqxlf8kSm58AyDPYhXnvX7vTbQwd4quPuduPGlbVqq0Pn/ytQ0J5T+hVtYZd1lxR334n4TnmniiLo0xUNe8x381w9X8VUgWpRSpYf5c4RBPphhjq+lCSbxbGN7cAp/A74pswzcJ7DhArrNHKXyr+yYuIXEW2vQ2dexN1/Gj4V1CO7PyGH0gzviBRjoEhFuveNd0lxmcF2SO1sWgxqzf3FNvHsnJCEZVx62sPrhdcPHtKaZmFGT2uOirDQCpTUEanOTxQoEdi7IU0SIsMZjWwAXNhlYk9nddDyOD7rpXAwC1gGWzuzAcVHNi05tukuorWlpQD4fSOaAnzXPoZWTGels+20yWwup1UF9W4tDOFagweCgBrXaIR2jHYVJMZ/ed6isqFlhclobfA7Sp0+n4X55MKwdGKyajcPoFw==');
 var defaultCode = decode('lZDBCsIwEETv+Yo5C5EkmoOfE2ywRYWytdA25N+73eYQBMHeMrvzZjebMMCcHTJCUIrGV+QH3mFqYv9pcUVSQMIMu1noXpSuJXHXc9FJ1g204OLRjhHW7MG1S1c2/eXLZYWh755RRrPhxPCyEzN8gTMe1DV/APowwcscnfEL4QsJ4IwAWzifmgtW9CQfZynRTK0=');
 
 var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: defaultCode } ];
@@ -231,13 +231,10 @@ menu.appendChild( buttonAbout );
 menu.appendChild( document.createElement( 'br' ) );
 
 
-var buttonObject = document.createElement( 'button' );
-buttonObject.className = 'button';
-menu.appendChild( buttonObject );
-
 var buttonObjectExporter = document.createElement( 'a' );
 buttonObjectExporter.className = 'button';
 buttonObjectExporter.textContent = 'OBJ';
+buttonObjectExporter.style.display = 'inline-block';
 buttonObjectExporter.addEventListener( 'click', function ( event ) {
 
   var iframe = document.getElementsByTagName('iframe')[0];
@@ -250,15 +247,12 @@ buttonObjectExporter.addEventListener( 'click', function ( event ) {
   buttonObjectExporter.download = documents[ 0 ].filename + '.obj';
 
 }, false );
-buttonObject.appendChild( buttonObjectExporter );
-
-var buttonMtl = document.createElement( 'button' );
-buttonMtl.className = 'button';
-menu.appendChild( buttonMtl );
+menu.appendChild( buttonObjectExporter );
 
 var buttonMtlExporter = document.createElement( 'a' );
 buttonMtlExporter.className = 'button';
 buttonMtlExporter.textContent = 'MTL';
+buttonMtlExporter.style.display = 'inline-block';
 buttonMtlExporter.addEventListener( 'click', function ( event ) {
 
   var iframe = document.getElementsByTagName('iframe')[0];
@@ -271,7 +265,20 @@ buttonMtlExporter.addEventListener( 'click', function ( event ) {
   buttonMtlExporter.download = documents[ 0 ].filename + '.mtl';
 
 }, false );
-buttonMtl.appendChild( buttonMtlExporter );
+menu.appendChild( buttonMtlExporter );
+
+var buttonSaveImage = document.createElement( 'a' );
+buttonSaveImage.className = 'button';
+buttonSaveImage.textContent = 'PNG';
+buttonSaveImage.style.display = 'inline-block';
+buttonSaveImage.addEventListener( 'click', function ( event ) {
+
+  var iframe = document.getElementsByTagName('iframe')[0];
+  var image = iframe.contentWindow.getImage();
+  window.open(image.replace("image/png", "image/octet-stream"));
+  
+}, false );
+menu.appendChild( buttonSaveImage );
 
 
 // popup
